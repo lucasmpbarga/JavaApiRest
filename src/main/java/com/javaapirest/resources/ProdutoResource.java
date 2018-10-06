@@ -2,16 +2,32 @@ package com.javaapirest.resources;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.javaapirest.domain.Produto;
+import com.javaapirest.services.ProdutoService;
 
 @RestController
 @RequestMapping(value="/produtos")
 public class ProdutoResource {
+	
+	@Autowired
+	private ProdutoService service;
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.GET)
+	public ResponseEntity<?> find(@PathVariable Integer id) {
+		Produto obj = service.buscar(id);
+		return ResponseEntity.ok().body(obj);
+	}
+	
+	
 	@RequestMapping(method=RequestMethod.GET)
 	public List<Produto> listar() {
 		Produto p1 = new Produto(1, "123","Informatica","Descricao",2,3);
@@ -24,5 +40,7 @@ public class ProdutoResource {
 			
 		return lp;
 	}
+	
+	
 
 }
