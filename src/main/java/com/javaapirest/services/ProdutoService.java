@@ -15,18 +15,28 @@ public class ProdutoService {
 	@Autowired
 	private ProdutoRepository repo;
 	
-	public Produto buscar(Integer id) {
+	public Produto find(Integer id) {
 		Optional<Produto> obj = repo.findById(id);
 		return obj.orElse(null);		
 	}
 	
-	public List<Produto> buscarTodos(){
+	public List<Produto> findAll(){
 		List<Produto> listaProduto = repo.findAll();
 		return listaProduto;
 	}
 	
-	public Produto inserir(Produto obj){
+	public Produto insert(Produto obj){
 		obj.setProduto_id(null);
 		return repo.save(obj);
+	}
+	
+	public Produto update(Produto obj){
+		find(obj.getProduto_id());
+		return repo.save(obj);
+	}
+	
+	public void delete(Integer id){
+		find(id);
+		repo.deleteById(id);
 	}
 }
