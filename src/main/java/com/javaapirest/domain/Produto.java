@@ -23,8 +23,8 @@ public class Produto implements Serializable {
     
     public Produto() {}
 
-	public Produto(int produto_id, String codigo_barra, String nome, String descricao, int quantidade,
-			int categoria_id) {
+	public Produto(Integer produto_id, String codigo_barra, String nome, String descricao, Integer quantidade,
+			Integer categoria_id) {
 		super();
 		this.produto_id = produto_id;
 		this.codigo_barra = codigo_barra;
@@ -34,11 +34,11 @@ public class Produto implements Serializable {
 		this.categoria_id = categoria_id;
 	}
 
-	public int getProduto_id() {
+	public Integer getProduto_id() {
 		return produto_id;
 	}
 
-	public void setProduto_id(int produto_id) {
+	public void setProduto_id(Integer produto_id) {
 		this.produto_id = produto_id;
 	}
 
@@ -66,26 +66,26 @@ public class Produto implements Serializable {
 		this.descricao = descricao;
 	}
 
-	public int getQuantidade() {
+	public Integer getQuantidade() {
 		return quantidade;
 	}
 
-	public void setQuantidade(int quantidade) {
+	public void setQuantidade(Integer quantidade) {
 		this.quantidade = quantidade;
 	}
 
-	public int getCategoria_id() {
+	public Integer getCategoria_id() {
 		return categoria_id;
 	}
 
-	public void setCategoria_id(int categoria_id) {
+	public void setCategoria_id(Integer categoria_id) {
 		this.categoria_id = categoria_id;
 	}
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
+		final Integer prime = 31;
+		Integer result = 1;
 		result = prime * result + categoria_id;
 		return result;
 	}

@@ -1,5 +1,6 @@
 package com.javaapirest.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +18,15 @@ public class ProdutoService {
 	public Produto buscar(Integer id) {
 		Optional<Produto> obj = repo.findById(id);
 		return obj.orElse(null);		
+	}
+	
+	public List<Produto> buscarTodos(){
+		List<Produto> listaProduto = repo.findAll();
+		return listaProduto;
+	}
+	
+	public Produto inserir(Produto obj){
+		obj.setProduto_id(null);
+		return repo.save(obj);
 	}
 }
