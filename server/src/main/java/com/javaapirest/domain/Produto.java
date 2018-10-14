@@ -19,19 +19,19 @@ public class Produto implements Serializable {
     private String nome;
     private String descricao;
     private Integer quantidade;
-    private Integer categoria_id;
+    private String categoria;
     
     public Produto() {}
 
 	public Produto(Integer produto_id, String codigo_barra, String nome, String descricao, Integer quantidade,
-			Integer categoria_id) {
+			String categoria) {
 		super();
 		this.produto_id = produto_id;
 		this.codigo_barra = codigo_barra;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.quantidade = quantidade;
-		this.categoria_id = categoria_id;
+		this.categoria = categoria;
 	}
 
 	public Integer getProduto_id() {
@@ -74,21 +74,21 @@ public class Produto implements Serializable {
 		this.quantidade = quantidade;
 	}
 
-	public Integer getCategoria_id() {
-		return categoria_id;
+	public String getCategoria_id() {
+		return categoria;
 	}
 
-	public void setCategoria_id(Integer categoria_id) {
-		this.categoria_id = categoria_id;
+	public void setCategoria_id(String categoria) {
+		this.categoria = categoria;
 	}
 
-	@Override
-	public int hashCode() {
-		final Integer prime = 31;
-		Integer result = 1;
-		result = prime * result + categoria_id;
-		return result;
-	}
+    @Override
+    public int hashCode() {
+        final Integer prime = 31;
+        Integer result = 1;
+        result = prime * result + produto_id;
+        return result;
+    }
 
 	@Override
 	public boolean equals(Object obj) {
@@ -99,13 +99,9 @@ public class Produto implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Produto other = (Produto) obj;
-		if (categoria_id != other.categoria_id)
+		if (categoria != other.categoria)
 			return false;
 		return true;
-	}
-	
-	
-    
-    
+	}    
 
 }
